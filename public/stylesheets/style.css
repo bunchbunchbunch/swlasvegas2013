@@ -1,8 +1,145 @@
+/* Import the normalize file */
+@import url("normalize.css");
+
+/* Global Declarations */
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 10px "Proxima Nova", Helvetica, Arial, sans-serif;
+  background: rgb(51,160,242);
+  color: white;
+  padding: 1em;
+  -webkit-font-smoothing: antialiased;
+}
+@media (max-width: 480px) {
+	body {
+		font-size: 8px;
+  }
+}
+/* Header Styling */
+header{
+	padding: 2em;
+}
+h1{
+	font-size: 9em;
+	font-weight: 900;
+	letter-spacing: 1px;
+	margin: 0 auto;
+	width: intrinsic;
+}
+/* Section Styling */
+section{
+	max-width: 620px;
+	margin: 0 auto;
+}
+section header{
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	margin-bottom: 2em;
+}
+h2{
+	font-size: 4.8em;
+	font-weight: 300;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	text-align: center;
+	line-height: .8em;
+}
+/* Buttons */
+button{
+	font-size: 2.4em;
+	font-weight: 300;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	color: rgb(51,160,242);
+	background: rgba(255,255,255,.7);
+	border: none;
+	display: block;
+	-webkit-transition: background .2s ease;
+}
+button:active{
+	background: rgba(255,255,255,1);
+}
+#linkedin{
+	margin: 1.6em auto;
+	padding: .9em 1.2em;
+	border-radius: .4em;
+}
+#addPhoto{
+	font-size: 2.1em;
+	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+	margin: 1em auto 3em;
 }
 
-a {
-  color: #00B7FF;
+/* Form Styling */
+form{
+	margin: 0 0 4em;
+}
+fieldset{
+	border: none;
+	padding: 0;
+}
+form ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+#name li, #job li{
+	width: 50%;
+	float: left;
+}
+#name li:first-child, #job li:first-child{
+	padding-right: 1em;
+}
+#name li:last-child, #job li:last-child{
+	padding-left: 1em;
+}
+label{
+	display: block;
+	font-size: 2.1em;
+	font-weight: 400;
+	letter-spacing: 2px;
+	text-transform: uppercase; 
+	margin-bottom: .2em;
+	padding-left: .4em;
+}
+input, textarea{
+	font-family: "skolar";
+	color: rgb(51,160,242);
+	background: rgba(255,255,255,.7);
+	margin-bottom: 2rem;
+	padding: 0 .2em;
+	width: 100%;
+	border: none;
+	-webkit-transition: background .2s ease;
+}
+input{
+	font-size: 4.2em;
+}
+textarea{
+	resize: vertical;
+	font-size: 3.6em;
+	padding: .4em;
+}
+input:focus, textarea:focus{
+	outline: none;
+	background: rgba(255,255,255,1);
+}
+::-webkit-input-placeholder {
+	color: rgb(51,160,242);
+}
+input[type="text"]{
+	width: 100%;
+}
+#megafield{
+	font-size: 2.4em;
+}
+input[type="submit"]{
+	font: 700 6em "Proxima Nova";
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	margin: .5em 0 0 0;
+	padding: .4em;
+	background: rgba(0,0,0,.7);
+	-webkit-transition: background .2s ease;
 }
