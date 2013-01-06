@@ -32,3 +32,7 @@ function parseCreate() {
   		  }
 		});
 	}
+
+	function parseGet() {
+
+	});

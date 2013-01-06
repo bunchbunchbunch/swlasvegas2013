@@ -1,0 +1,43 @@
+<html>
+<script src="http://www.parsecdn.com/js/parse-1.1.15.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script>
+	Parse.initialize("3LGPtH2cO67gy64Nbffk5P3fS5JAhifJiK265tcN", "1l8ZrqD3N0yUYVxJIz0vGhbiRQ5QbWfndEpIrrDe");
+</script>
+
+<script>
+	var Person = Parse.Object.extend("Person");
+	var query = new Parse.Query(Person);
+	var contestPeople = new Array();
+	var chosenOne;
+	var funFact;
+	query.find({
+	  success: function(results) {
+	  	for (var i=0; i<results.length; i++) {
+	  		var randomnumber=Math.floor(Math.random()*2) + 1;
+	  		if ((contestPeople.length < 9) && (randomnumber % 2 == 0)) {
+	  			var person = results[i].attributes;
+	  			contestPeople.push(person);
+	  			$('#people').append('<div class="person"><img src="' + person.PhotoUrl + '"/></div>');
+	  		}
+	  		console.log(contestPeople);
+	  	}
+	  	var randomnumber=Math.floor(Math.random()*contestPeople.length);
+	  	chosenOne = contestPeople[randomnumber];
+	  	randomnumber=Math.floor(Math.random()*chosenOne.Bullets.length);
+	  	funFact = chosenOne.Bullets[randomnumber];	
+	  	$('#funFact').html(funFact);
+	  },
+	  error: function(error) {
+	    alert("Error: " + error.code + " " + error.message);
+  	  }
+	});
+</script>
+<body>
+	<h1 id="funFact">Fun Fact</h1>
+	<div id="people">
+	</div>
+</body>
+</html>
+
+<script>
