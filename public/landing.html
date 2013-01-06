@@ -7,6 +7,17 @@
 	<script type="text/javascript" src="//use.typekit.net/mwk6fxe.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
+	<script src="http://www.parsecdn.com/js/parse-1.1.15.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+	<script src="/javascripts/parse.js"></script>
+
+	<script src="https://api.filepicker.io/v1/filepicker.js"></script>
+	<script type="text/javascript">
+	    //Seting up Filepicker.io with your api key
+	    filepicker.setKey('AjONraBlTz2EqLZNMOcn2z');
+	</script>
+	<script src="/javascripts/filepicker.js"></script>
+
 	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 
 </head>
@@ -22,18 +33,22 @@
 		
 		<button id="linkedin">import profile from linked in</button>
 		
-		<button id="addPhoto">add photo</button>
+		<img id="photo" src=''/>
+
+		<button id="addPhoto" onclick="uploadImage();">add photo</button>
+
 		
 		<form>
+			<input type='hidden' id='photoUrl'/>
 			<fieldset id="name">
 				<ul>
 					<li>
 						<label for="firstName">first name</label>
-						<input id="firstName" type="text" placeholder="Chuck">
+						<input id="firstName" type="text" placeholder="Chuck" required>
 					</li>
 					<li>
 						<label for="lastName">last name</label>
-						<input id="lastName" type="text" placeholder="Norris">
+						<input id="lastName" type="text" placeholder="Norris" required>
 					</li>
 				</ul>
 			</fieldset>
@@ -42,11 +57,11 @@
 				<ul>
 					<li>
 						<label for="title">title</label>
-						<input id="title" type="text" placeholder="Developer">
+						<input id="title" type="text" placeholder="Developer" required>
 					</li>
 					<li>
 						<label for="company">company</label>
-						<input id="company" type="text" placeholder="America Inc.">
+						<input id="company" type="text" placeholder="America Inc." required>
 					</li>
 				</ul>
 			</fieldset>	
@@ -75,7 +90,7 @@
 				<label for="megaField">megafield</label>
 				<textarea id="megafield"></textarea>
 			</fieldset>
-			<input type="submit" value="create card">
+			<input type="submit" value="create card" onclick="return parseCreate();">
 		</form>
 	</section>
 
