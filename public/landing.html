@@ -38,8 +38,8 @@
 		<button id="addPhoto" onclick="uploadImage();">add photo</button>
 
 		
-		<form>
-			<input type='hidden' id='photoUrl'/>
+		<form action="/landing.html" method="GET">
+			<input type='hidden' id='photoUrl' />
 			<fieldset id="name">
 				<ul>
 					<li>
@@ -66,22 +66,22 @@
 				</ul>
 			</fieldset>	
 			
-			<fieldset id="location">
+			<fieldset>
 				<label for="location">location</label>
 				<input id="location" type="text" placeholder="'Merrica">
 			</fieldset>
 			<fieldset>
 				<ul>
 					<li>
-						<label for="funFact1" >fun fact #1</label>
+						<label for="funfact1" >fun fact #1</label>
 						<textarea id="funfact1"></textarea>
 					</li>
 					<li>
-						<label for="funFact2" >fun fact #2</label>
+						<label for="funfact2" >fun fact #2</label>
 						<textarea id="funfact2"></textarea>
 					</li>
 					<li>
-						<label for="funFact3" >fun fact #3</label>
+						<label for="funfact3" >fun fact #3</label>
 						<textarea id="funfact3"></textarea>
 					</li>
 				</ul>
@@ -90,7 +90,7 @@
 				<label for="megaField">megafield</label>
 				<textarea id="megafield"></textarea>
 			</fieldset>
-			<input type="submit" value="create card" onclick="return parseCreate();">
+			<input type="button" value="create card" onclick="return parseCreate();">
 		</form>
 	</section>
 

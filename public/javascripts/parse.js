@@ -12,22 +12,20 @@ function parseCreate() {
 		person.set("Title", $('#title').val());
 		person.add("Tags", "StartUpWeekendLV");
 
-		if ($('#funFact1').val() != null) {
-			person.add("Bullets", $('#funFact1').val());
+		if ($('#funfact1').val() != "") {
+			person.add("Bullets", $('#funfact1').val());
 		}
-		if ($('#funFact2').val() != null) {
-			person.add("Bullets", $('#funFact2').val());
+		if ($('#funfact2').val() != null) {
+			person.add("Bullets", $('#funfact2').val());
 		}
-		if ($('#funFact3').val() != null) {
-			person.add("Bullets", $('#funFact3').val());
+		if ($('#funfact3').val() != null) {
+			person.add("Bullets", $('#funfact3').val());
 		}
 		 
 		person.save(null, {
 		  success: function(person) {
-		    alert('saved');
-		    $('#personName').val("");
-			$('#personComment').val("");
-			$('#personImage').val("");
+		    alert('success');
+		    window.location = "/landing.html";
 		  },
 		  error: function(gameScore, error) {
 		    alert('error');
