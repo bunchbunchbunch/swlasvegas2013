@@ -20,6 +20,18 @@
 
 	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 
+		<script type="text/javascript">
+		$(document).ready(function() {
+		
+			$("#photo").hide();
+		
+			$("#addPhoto").click(function() {
+				$("#photo").show();
+				$("#addPhoto").hide();
+			});
+		});
+	</script>
+
 </head>
 <body>
 	<header>
@@ -27,12 +39,10 @@
 	</header>
 
 	<section>
-		<header>
-			<h2>card creator</h2>
-		</header>
+		<h2>card creator</h2>
 		
 		<button id="linkedin">import profile from linked in</button>
-		
+
 		<img id="photo" src=''/>
 
 		<button id="addPhoto" onclick="uploadImage();">add photo</button>
