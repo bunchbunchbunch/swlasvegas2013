@@ -21,38 +21,61 @@
 	</header>
 	
 	<section class="banner">
-		<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+		<p id="funFact">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
 	</section>
 
-	<section class="options">
-		<button>
-			<img src="http://a0.twimg.com/profile_images/2959465314/bba95efa24b6eb99c127411e82a26f7d.png">
-		</button>
-		<button>
-			<img src="http://a0.twimg.com/profile_images/2959465314/bba95efa24b6eb99c127411e82a26f7d.png">
-		</button>
-		<button>
-			<img src="http://a0.twimg.com/profile_images/2959465314/bba95efa24b6eb99c127411e82a26f7d.png">
-		</button>
-		<button>
-			<img src="http://a0.twimg.com/profile_images/2959465314/bba95efa24b6eb99c127411e82a26f7d.png">
-		</button>
-		<button>
-			<img src="http://a0.twimg.com/profile_images/2959465314/bba95efa24b6eb99c127411e82a26f7d.png">
-		</button>
-		<button>
-			<img src="http://a0.twimg.com/profile_images/2959465314/bba95efa24b6eb99c127411e82a26f7d.png">
-		</button>
-		<button>
-			<img src="http://a0.twimg.com/profile_images/2959465314/bba95efa24b6eb99c127411e82a26f7d.png">
-		</button>
-		<button>
-			<img src="http://a0.twimg.com/profile_images/2959465314/bba95efa24b6eb99c127411e82a26f7d.png">
-		</button>
-		<button>
-			<img src="http://a0.twimg.com/profile_images/2959465314/bba95efa24b6eb99c127411e82a26f7d.png">
-		</button>
+	<section class="options" id="people">
 
 	</section>
 </body>
 </html>
+
+<script>
+
+var chosenOne;
+
+$(document).ready(function() {
+
+	var Person = Parse.Object.extend("Person");
+	var query = new Parse.Query(Person);
+	var contestPeople = new Array();
+	var contestPeopleHash = {};
+	var funFact;
+	query.find({
+	  success: function(results) {
+	  	var id = 1;
+	  	while (contestPeople.length < 9) {
+	  		var randomnumber=Math.floor(Math.random()*(results.length -1));
+			var person = results[randomnumber].attributes;
+			if (!contestPeopleHash[person.Name]) {
+				person.id = id;
+		  		contestPeople.push(person);
+		  		contestPeopleHash[person.Name] = true;
+
+		  		var html = '<button onclick="clickHandler($(this));" class="person" id="' + id++ + '"><img src="' + person.PhotoUrl + '"/></button>';
+		  		$('#people').append(html);
+		  	}
+	  	}
+	  	var randomnumber=Math.floor(Math.random()*contestPeople.length);
+	  	chosenOne = contestPeople[randomnumber];
+	  	randomnumber=Math.floor(Math.random()*chosenOne.Bullets.length);
+	  	funFact = chosenOne.Bullets[randomnumber];	
+	  	$('#funFact').html(funFact);
+	  	
+	  },
+	  error: function(error) {
+	    alert("Error: " + error.code + " " + error.message);
+  	  }
+	});
+
+});
+
+function clickHandler(el) {
+	console.log(el.attr("id"));
+	console.log(chosenOne.id);
+	if (el.attr("id") == chosenOne.id) {
+		alert('correct');
+	}
+}
+
+</script>
