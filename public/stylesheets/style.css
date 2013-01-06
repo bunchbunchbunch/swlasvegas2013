@@ -15,6 +15,9 @@ body {
 		font-size: 8px;
   }
 }
+body.index{
+	padding: 0;
+}
 /* Header Styling */
 header{
 	padding: 2em;
@@ -27,9 +30,34 @@ h1{
 	width: intrinsic;
 }
 /* Section Styling */
-section{
+section.addform{
 	max-width: 620px;
 	margin: 0 auto;
+}
+.index section{
+	width: 100%;
+	height: 800px;
+	margin: 0 auto;
+}
+.index section div{
+	max-width: 900px;
+	padding: 8em 0;
+	margin: 0 auto;
+}
+#intro{
+	height: 900px;
+}
+#intro div{
+	padding: 0;
+}
+#what{
+	background: rgb(57,198,50); 
+}
+#about{
+	background: rgb(255,191,41); 
+}
+#team{
+	background: rgb(255,77,41); 
 }
 h2{
 	border-top: 1px solid;
@@ -157,4 +185,52 @@ input[type="submit"]{
 	height: 400px;
 	background: white;
 	box-shadow: 0px 0px 0px 4000px rgba(255,255,255,.7);
+}
+
+.index p{
+	font-size: 2.2em;
+	line-height: 1.4em;
+	width: 580px;
+	padding: 2em 0 0 4em;
+	float: left;
+	font-family: "skolar";
+}
+.index ul{
+	list-style: none;
+	font-size: 24px;
+	line-height: 1.4em;
+	width: 456px;
+	float: left;
+	padding: 3em 0 0 4em;
+	font-family: "skolar";
+}
+.lefter{
+	float: left;
+	width: 600px;
+	padding-left: 100px;
+}
+.lefter *{
+	display: block;
+	clear: both;
+}
+.screenshot{
+	display: block;
+	float: right;
+}
+.index img.icon{
+	float: left;
+	margin: 60px 0 40px 300px;
+}
+#intro a{
+	text-decoration: none;
+	font: 400 2.4em "Proxima Nova";
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	text-align: center;
+	border-radius: .4em;
+	width: 363px;
+	margin: .5em 0 0 180px;
+	padding: .8em;
+	background: rgba(0,0,0,.7);
+	-webkit-transition: background .2s ease;
 }
