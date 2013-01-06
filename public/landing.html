@@ -20,20 +20,17 @@
 
 	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 
-<!-- Modal put on hold
 		<script type="text/javascript">
 		$(document).ready(function() {
 		
-			$("#modal").hide();
+			$("#photo").hide();
 		
-			$("#linkedin").click(function() {
-				$('#modal').fadeIn('slow', function() {
-        // Animation complete
-      });
+			$("#addPhoto").click(function() {
+				$("#photo").show();
+				$("#addPhoto").hide();
 			});
 		});
 	</script>
--->
 
 </head>
 <body>
@@ -45,15 +42,6 @@
 		<h2>card creator</h2>
 		
 		<button id="linkedin">import profile from linked in</button>
-		
-<!-- Modal put on hold
-		<section id="modal">
-			<form>
-			
-			</form>
-		</section>
--->
-		
 
 		<img id="photo" src=''/>
 
