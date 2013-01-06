@@ -1,4 +1,4 @@
-Parse.initialize("ztI5uQbXWoL0MTlxX3FEzkn5fgcdnYrqvYcNkzFN", "FgQA4LTZBG79ChwnZcNjrWnJDd9OkVZt0H629t5R");
+Parse.initialize("3LGPtH2cO67gy64Nbffk5P3fS5JAhifJiK265tcN", "1l8ZrqD3N0yUYVxJIz0vGhbiRQ5QbWfndEpIrrDe");
 
 function parseCreate() {
 		var Person = Parse.Object.extend("Person");
