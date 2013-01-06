@@ -22,7 +22,9 @@
 	</header>
 	
 	<section class="banner">
-		<p id="funFact">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+		<p id="funFact">Fun Fact...</p>
+		<p id="personFact"></p>
+		<p id="tryAgain"><a href="#" onClick="location.reload()">Try Again...</a></p>
 	</section>
 
 	<section class="options" id="people">
@@ -35,6 +37,8 @@
 
 var chosenOne;
 var wrongGuesses = 0;
+var gameOver = false;
+var funFact;
 
 $(document).ready(function() {
 
@@ -42,7 +46,6 @@ $(document).ready(function() {
 	var query = new Parse.Query(Person);
 	var contestPeople = new Array();
 	var contestPeopleHash = {};
-	var funFact;
 
 	query.find({
 	  success: function(results) {
@@ -62,7 +65,8 @@ $(document).ready(function() {
 	  	var randomnumber=Math.floor(Math.random()*contestPeople.length);
 	  	chosenOne = contestPeople[randomnumber];
 	  	randomnumber=Math.floor(Math.random()*chosenOne.Bullets.length);
-	  	funFact = chosenOne.Bullets[randomnumber];	
+	  	funFact = chosenOne.Bullets[randomnumber];
+	  	console.log(funFact)
 	  	$('#funFact').html(funFact);
 	  	
 	  },
@@ -73,14 +77,28 @@ $(document).ready(function() {
 
 });
 
+function showPersonFact() {
+		$('#personFact').html("<strong>" + chosenOne.Name + "</strong> " + funFact);
+		$("#personFact").show("fade", "slow");
+}
+
+function tryAgain(message) {
+		$('#tryAgain').find("a").html(message);
+		$("#tryAgain").show("fade", "slow");
+		gameOver = true;
+}
+
 function clickHandler(el) {
-	console.log(el.attr("id"));
-	console.log(chosenOne.id);
+	if (gameOver)
+		return;
+
 	if (el.attr("id") == chosenOne.id) {
+		$('#funFact').html("NICE WORK!");
+		showPersonFact();
+		tryAgain("Play again?");
 		$( ".mobile" ).animate({
 		backgroundColor: "#39C632",
 		}, 1000 );
-			$('#funFact').html("NICE WORK!");
 	}
 	else
 	{
@@ -96,11 +114,27 @@ function clickHandler(el) {
 		}
 		else
 		{
+			$('#funFact').html("NO DICE");
+			showPersonFact();
 			$( ".mobile" ).animate({
 			backgroundColor: "#FF4D29",
 			}, 1000 );
-			$('#funFact').html("NO DICE");
-		}
+
+			// run the effect
+			for (var i = 1; i < 10; i++)
+			{
+				if (i == chosenOne.id)
+				{
+	        		$( "#" + i ).effect("pulsate", "slow", function ()
+        			{
+						tryAgain("Try Again...");
+		        		$( "#" + i ).find("img").effect("scale", { percent: 200 }, "slow");
+        			});
+	        	}
+            	else
+	        		$( "#" + i ).fadeTo("slow", 0);
+			}
+        }
 	}
 }
 
