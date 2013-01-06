@@ -7,7 +7,16 @@
 	<script type="text/javascript" src="//use.typekit.net/mwk6fxe.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="http://www.parsecdn.com/js/parse-1.1.15.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+	<script src="/javascripts/parse.js"></script>
+
+	<script src="https://api.filepicker.io/v1/filepicker.js"></script>
+	<script type="text/javascript">
+	    //Seting up Filepicker.io with your api key
+	    filepicker.setKey('AjONraBlTz2EqLZNMOcn2z');
+	</script>
+	<script src="/javascripts/filepicker.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 
@@ -37,6 +46,7 @@
 		
 		<button id="linkedin">import profile from linked in</button>
 		
+<<<<<<< .merge_file_EQiG9s
 <!-- Modal put on hold
 		<section id="modal">
 			<form>
@@ -50,15 +60,24 @@
 				<button id="addPhoto">add photo</button>
 			</fieldset>
 			
+=======
+		<img id="photo" src=''/>
+
+		<button id="addPhoto" onclick="uploadImage();">add photo</button>
+
+		
+		<form action="/landing.html" method="GET">
+			<input type='hidden' id='photoUrl' />
+>>>>>>> .merge_file_GQQ4ym
 			<fieldset id="name">
 				<ul>
 					<li>
 						<label for="firstName">first name</label>
-						<input id="firstName" type="text" placeholder="Chuck">
+						<input id="firstName" type="text" placeholder="Chuck" required>
 					</li>
 					<li>
 						<label for="lastName">last name</label>
-						<input id="lastName" type="text" placeholder="Norris">
+						<input id="lastName" type="text" placeholder="Norris" required>
 					</li>
 				</ul>
 			</fieldset>
@@ -67,31 +86,31 @@
 				<ul>
 					<li>
 						<label for="title">title</label>
-						<input id="title" type="text" placeholder="Developer">
+						<input id="title" type="text" placeholder="Developer" required>
 					</li>
 					<li>
 						<label for="company">company</label>
-						<input id="company" type="text" placeholder="America Inc.">
+						<input id="company" type="text" placeholder="America Inc." required>
 					</li>
 				</ul>
 			</fieldset>	
 			
-			<fieldset id="location">
+			<fieldset>
 				<label for="location">location</label>
 				<input id="location" type="text" placeholder="'Merrica">
 			</fieldset>
 			<fieldset>
 				<ul>
 					<li>
-						<label for="funFact1" >fun fact #1</label>
+						<label for="funfact1" >fun fact #1</label>
 						<textarea id="funfact1"></textarea>
 					</li>
 					<li>
-						<label for="funFact2" >fun fact #2</label>
+						<label for="funfact2" >fun fact #2</label>
 						<textarea id="funfact2"></textarea>
 					</li>
 					<li>
-						<label for="funFact3" >fun fact #3</label>
+						<label for="funfact3" >fun fact #3</label>
 						<textarea id="funfact3"></textarea>
 					</li>
 				</ul>
@@ -100,7 +119,7 @@
 				<label for="megaField">megafield</label>
 				<textarea id="megafield"></textarea>
 			</fieldset>
-			<input type="submit" value="create card">
+			<input type="button" value="create card" onclick="return parseCreate();">
 		</form>
 	</section>
 
