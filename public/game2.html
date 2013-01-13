@@ -5,13 +5,14 @@
 
 	<title>prymd</title>
 
-	<script type="text/javascript" src="//use.typekit.net/mwk6fxe.js"></script>
+	<script type="text/javascript" src="http://use.typekit.net/mwk6fxe.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
 	<script src="http://www.parsecdn.com/js/parse-1.1.15.min.js"></script>
 	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 	<script src="/javascripts/parse2.js"></script>
+	<script src="/javascripts/gameLogic.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="stylesheets/mobile.css">
 
@@ -37,110 +38,3 @@
 	</audio>
 </body>
 </html>
-
-<script>
-
-var chosenOne;
-var wrongGuesses = 0;
-var gameOver = false;
-var funFact;
-
-$(document).ready(function() {
-
-	var Person = Parse.Object.extend("Person");
-	var query = new Parse.Query(Person);
-	var contestPeople = new Array();
-	var contestPeopleHash = {};
-
-	query.find({
-	  success: function(results) {
-	  	var id = 1;
-	  	while (contestPeople.length < 9) {
-	  		var randomnumber=Math.floor(Math.random()*(results.length -1));
-			var person = results[randomnumber].attributes;
-			if (!contestPeopleHash[person.Name]) {
-				person.id = id;
-		  		contestPeople.push(person);
-		  		contestPeopleHash[person.Name] = true;
-
-		  		var html = '<button onclick="clickHandler($(this));" class="person" id="' + id++ + '"><img src="' + person.PhotoUrl + '"/></button>';
-		  		$('#people').append(html);
-		  	}
-	  	}
-	  	var randomnumber=Math.floor(Math.random()*contestPeople.length);
-	  	chosenOne = contestPeople[randomnumber];
-	  	randomnumber=Math.floor(Math.random()*chosenOne.Bullets.length);
-	  	funFact = chosenOne.Bullets[randomnumber];
-	  	console.log(funFact)
-	  	$('#funFact').html(funFact);
-	  	
-	  },
-	  error: function(error) {
-	    alert("Error: " + error.code + " " + error.message);
-  	  }
-	});
-
-});
-
-function showPersonFact() {
-		$('#personFact').html("<strong>" + chosenOne.Name + "</strong> " + funFact);
-		$("#personFact").show("fade", "slow");
-}
-
-function tryAgain(message) {
-		$('#tryAgain').find("a").html(message);
-		$("#tryAgain").show("fade", "slow");
-		gameOver = true;
-}
-
-function clickHandler(el) {
-	if (gameOver)
-		return;
-
-	if (el.attr("id") == chosenOne.id) {
-		$('#funFact').html("NICE WORK!");
-		showPersonFact();
-		tryAgain("Play again?");
-		$( ".mobile" ).animate({
-		backgroundColor: "#39C632",
-		}, 1000 );
-	}
-	else
-	{
-		if (wrongGuesses++ < 2)
-		{
-			$( ".mobile" ).animate({
-			backgroundColor: "#FFBF29",
-			}, 1000 );
-			if (wrongGuesses == 1)
-				$('#funFact').html("NAH...");
-			else
-				$('#funFact').html("ONE MORE TRY...");
-		}
-		else
-		{
-			$('#funFact').html("NO DICE");
-			showPersonFact();
-			$( ".mobile" ).animate({
-			backgroundColor: "#FF4D29",
-			}, 1000 );
-
-			// run the effect
-			for (var i = 1; i < 10; i++)
-			{
-				if (i == chosenOne.id)
-				{
-	        		$( "#" + i ).effect("pulsate", "slow", function ()
-        			{
-						tryAgain("Try Again...");
-		        		$( "#" + i ).find("img").effect("scale", { percent: 200 }, "slow");
-        			});
-	        	}
-            	else
-	        		$( "#" + i ).fadeTo("slow", 0);
-			}
-        }
-	}
-}
-
-</script>

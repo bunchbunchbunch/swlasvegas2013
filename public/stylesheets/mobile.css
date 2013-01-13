@@ -80,9 +80,19 @@ h1{
 	width: 33%;
 	padding: 1em;
 }
-.options img{
-	max-width: 100%;
-	border-radius: 100%;
+
+/* viewport for cropping and image offsets */
+.viewport {
+	width: 178px;
+	height: 178px;
+	overflow: hidden;
+	display: inline-block;
+	position: relative;
+	border-radius: 50%;
+	opacity: 0;
+}
+.viewport img {
+	position: absolute;
 }
 
 .selected{
